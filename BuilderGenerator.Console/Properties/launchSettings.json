@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "BuilderGenerator.Console": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    }
+  }
+}
