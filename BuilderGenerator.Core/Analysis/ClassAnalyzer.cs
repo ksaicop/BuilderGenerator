@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,38 +11,29 @@ namespace BuilderGenerator.Core.Analysis
     {
         public AnalysisResult Analyze(string classAsAString)
         {
-            var lines = classAsAString.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            string className = GetClassName(lines);
-            List<Property> properties = GetProperties(lines);
-            return new AnalysisResult(className, properties);
-        }
-
-        private static string GetClassName(string[] lines)
-        {
-            var classLine = lines.ElementAt(2);
-            var classLineSplitted = Split(classLine);
-            return classLineSplitted[2];
-        }
-
-        private static List<Property> GetProperties(string[] lines)
-        {
-            var properties = new List<Property>();
-            for (int i = 4; i < lines.Length - 2; i++)
+            SyntaxTree tree = CSharpSyntaxTree.ParseText(classAsAString);
+            CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
+            var classDeclarationSyntax = root.DescendantNodes().OfType<ClassDeclarationSyntax>().FirstOrDefault();
+            if (classDeclarationSyntax == null)
             {
-                var propertyLine = lines[i];
-                var propertyLineSplitted = Split(propertyLine);
-                var type = propertyLineSplitted[1];
-                var name = propertyLineSplitted[2];
+                throw new Exception("No class definition");
+            }
+
+            var className = classDeclarationSyntax.Identifier.ValueText;
+
+            var propertyDeclarationSyntaxArray = classDeclarationSyntax.DescendantNodes()
+                .OfType<PropertyDeclarationSyntax>()
+                .ToArray();
+            var properties = new List<Property>(propertyDeclarationSyntaxArray.Length);
+            foreach (var propertyDeclarationSyntax in propertyDeclarationSyntaxArray)
+	        {
+                var type = propertyDeclarationSyntax.Type.ToString();
+                var name = propertyDeclarationSyntax.Identifier.ValueText;
                 var property = new Property(type, name);
                 properties.Add(property);
             }
 
-            return properties;
-        }
-
-        private static string[] Split(string line)
-        {
-            return line.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            return new AnalysisResult(className, properties);
         }
     }
 }
