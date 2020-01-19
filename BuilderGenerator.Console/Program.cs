@@ -48,7 +48,7 @@ namespace BuilderGenerator.Console
 
         private static string GenerateBuilder(string classFileContent)
         {
-            var generator = new BuilderGenerator();
+            var generator = new Core.BuilderGenerator();
             return generator.Generate(classFileContent);
         }
     }

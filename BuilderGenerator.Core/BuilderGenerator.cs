@@ -1,7 +1,7 @@
 ﻿using BuilderGenerator.Core.Analysis;
 using BuilderGenerator.Core.Creation;
 
-namespace BuilderGenerator
+namespace BuilderGenerator.Core
 {
     public class BuilderGenerator
     {

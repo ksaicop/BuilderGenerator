@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace BuilderGenerator.Creation
+namespace BuilderGenerator.Core.Creation
 {
     public static class StringBuilderExtensions
     {
