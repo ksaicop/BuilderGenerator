@@ -1,18 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderGenerator.Core", "BuilderGenerator.Core\BuilderGenerator.Core.csproj", "{977135B8-8154-4010-BAAF-D32E65B7F433}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderGenerator.Core", "BuilderGenerator.Core\BuilderGenerator.Core.csproj", "{977135B8-8154-4010-BAAF-D32E65B7F433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderGenerator.Core.UnitTests", "BuilderGenerator.Core.UnitTests\BuilderGenerator.Core.UnitTests.csproj", "{394DECD0-3B75-49C0-B01A-D8389EB9790E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderGenerator.Core.UnitTests", "BuilderGenerator.Core.UnitTests\BuilderGenerator.Core.UnitTests.csproj", "{394DECD0-3B75-49C0-B01A-D8389EB9790E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{07C21E38-472B-4E99-A38A-590E280A4246}"
 	ProjectSection(SolutionItems) = preProject
 		README.me = README.me
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderGenerator.Console", "BuilderGenerator.Console\BuilderGenerator.Console.csproj", "{DC233EAB-B7AF-416A-B93E-FB3F0F089236}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderGenerator.Console", "BuilderGenerator.Console\BuilderGenerator.Console.csproj", "{DC233EAB-B7AF-416A-B93E-FB3F0F089236}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderGenerator.Web", "BuilderGenerator.Web\BuilderGenerator.Web.csproj", "{77E80ECA-32B2-4A72-8B5C-70DC91C2352E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{DC233EAB-B7AF-416A-B93E-FB3F0F089236}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC233EAB-B7AF-416A-B93E-FB3F0F089236}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC233EAB-B7AF-416A-B93E-FB3F0F089236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77E80ECA-32B2-4A72-8B5C-70DC91C2352E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E80ECA-32B2-4A72-8B5C-70DC91C2352E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E80ECA-32B2-4A72-8B5C-70DC91C2352E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E80ECA-32B2-4A72-8B5C-70DC91C2352E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
