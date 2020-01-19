@@ -9,7 +9,16 @@
     <h1 class="display-4">Welcome</h1>
 </div>
 <form method="post">
-    <textarea asp-for="Source"></textarea>
+    <div class="form-group">
+        <label for="sourceTextArea">Source code</label>
+        <textarea asp-for="SourceCode" id="sourceTextArea" class="form-control" rows="10" required></textarea>
+    </div>
     <input type="submit" />
 </form>
-<textarea>@Model.Result</textarea>
+@if (!string.IsNullOrWhiteSpace(Model.BuilderCode))
+{
+<div class="form-group">
+    <label for="resultTextArea">Builder code</label>
+    <textarea id="resultTextArea" class="form-control" rows="10">@Model.BuilderCode</textarea>
+</div>
+}

@@ -18,17 +18,15 @@ namespace BuilderGenerator.Web.Pages
         {
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public void OnPost()
         {
             var generator = new Core.BuilderGenerator();
-            Result = generator.Generate(Source);
-
-            return Page();
+            BuilderCode = generator.Generate(SourceCode);
         }
 
         [BindProperty]
-        public string Source { get; set; }
+        public string SourceCode { get; set; }
 
-        public string Result { get; set; }
+        public string BuilderCode { get; set; }
     }
 }
