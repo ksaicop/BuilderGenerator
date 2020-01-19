@@ -9,12 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderGenerator.Core.UnitT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{07C21E38-472B-4E99-A38A-590E280A4246}"
 	ProjectSection(SolutionItems) = preProject
-		README.me = README.me
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderGenerator.Console", "BuilderGenerator.Console\BuilderGenerator.Console.csproj", "{DC233EAB-B7AF-416A-B93E-FB3F0F089236}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderGenerator.Web", "BuilderGenerator.Web\BuilderGenerator.Web.csproj", "{77E80ECA-32B2-4A72-8B5C-70DC91C2352E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuilderGenerator.Web", "BuilderGenerator.Web\BuilderGenerator.Web.csproj", "{77E80ECA-32B2-4A72-8B5C-70DC91C2352E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
