@@ -101,11 +101,16 @@ namespace BuilderGenerator.Core.UnitTests.Creation
             Assert.Equal("string", builderProperty.Type);
         }
 
-        [Fact]
-        public void SinglePropertyWithSimpleName_BuilderPropertyPropertyNameAsExpected()
+        [Theory]
+        [InlineData("Property", "Property")]
+        [InlineData("PropertyName", "PropertyName")]
+        [InlineData("LongPropertyName", "LongPropertyName")]
+        public void SingleProperty_BuilderPropertyPropertyNameAsExpected(
+            string propertyName,
+            string builderPropertyName)
         {
             // Arrange
-            var property = new ClassMember("string", "Property");
+            var property = new ClassMember("string", propertyName);
             var analysisResult = new AnalysisResult("ClassName", new[] { property });
 
             // Act
@@ -114,14 +119,19 @@ namespace BuilderGenerator.Core.UnitTests.Creation
             // Assert
             Assert.NotNull(builderModel);
             var builderProperty = Assert.Single(builderModel.Properties);
-            Assert.Equal("Property", builderProperty.PropertyName);
+            Assert.Equal(builderPropertyName, builderProperty.PropertyName);
         }
 
-        [Fact]
-        public void SinglePropertyWithSimpleName_BuilderPropertyFieldNameAsExpected()
+        [Theory]
+        [InlineData("Property", "_property")]
+        [InlineData("PropertyName", "_propertyName")]
+        [InlineData("LongPropertyName", "_longPropertyName")]
+        public void SingleProperty_BuilderPropertyFieldNameAsExpected(
+            string propertyName,
+            string fieldName)
         {
             // Arrange
-            var property = new ClassMember("string", "Property");
+            var property = new ClassMember("string", propertyName);
             var analysisResult = new AnalysisResult("ClassName", new[] { property });
 
             // Act
@@ -130,14 +140,19 @@ namespace BuilderGenerator.Core.UnitTests.Creation
             // Assert
             Assert.NotNull(builderModel);
             var builderProperty = Assert.Single(builderModel.Properties);
-            Assert.Equal("_property", builderProperty.FieldName);
+            Assert.Equal(fieldName, builderProperty.FieldName);
         }
 
-        [Fact]
-        public void SinglePropertyWithTypeString_BuilderPropertyFieldValueAsExpected()
+        [Theory]
+        [InlineData("Property", "\"Property\"")]
+        [InlineData("PropertyName", "\"PropertyName\"")]
+        [InlineData("LongPropertyName", "\"LongPropertyName\"")]
+        public void SinglePropertyWithTypeString_BuilderPropertyFieldValueAsExpected(
+            string propertyName,
+            string fieldValue)
         {
             // Arrange
-            var property = new ClassMember("string", "Property");
+            var property = new ClassMember("string", propertyName);
             var analysisResult = new AnalysisResult("ClassName", new[] { property });
 
             // Act
@@ -146,14 +161,19 @@ namespace BuilderGenerator.Core.UnitTests.Creation
             // Assert
             Assert.NotNull(builderModel);
             var builderProperty = Assert.Single(builderModel.Properties);
-            Assert.Equal("\"Property\"", builderProperty.FieldValue);
+            Assert.Equal(fieldValue, builderProperty.FieldValue);
         }
 
-        [Fact]
-        public void SingleProperty_BuilderPropertyParameterNameAsExpected()
+        [Theory]
+        [InlineData("Property", "property")]
+        [InlineData("PropertyName", "propertyName")]
+        [InlineData("LongPropertyName", "longPropertyName")]
+        public void SingleProperty_BuilderPropertyParameterNameAsExpected(
+            string propertyName,
+            string parameterName)
         {
             // Arrange
-            var property = new ClassMember("string", "Property");
+            var property = new ClassMember("string", propertyName);
             var analysisResult = new AnalysisResult("ClassName", new[] { property });
 
             // Act
@@ -162,7 +182,7 @@ namespace BuilderGenerator.Core.UnitTests.Creation
             // Assert
             Assert.NotNull(builderModel);
             var builderProperty = Assert.Single(builderModel.Properties);
-            Assert.Equal("property", builderProperty.ParameterName);
+            Assert.Equal(parameterName, builderProperty.ParameterName);
         }
     }
 }
