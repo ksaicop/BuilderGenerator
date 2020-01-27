@@ -1,30 +1,32 @@
-using BuilderGenerator.Core.Analysis;
 using BuilderGenerator.Core.Creation;
 using Xunit;
 
 namespace BuilderGenerator.Core.UnitTests.Creation
 {
-    public class CreatorTests
+    public class BuilderCodeGeneratorTests
     {
         [Fact]
         public void NoConstructors_OneGetSetProperty()
         {
-            Property property = new Property("string", "Name");
+            // Arrange
+            var property = new BuilderProperty("string", "Name", "_name", "\"Name\"", "name");
             var properties = new[]
             {
                 property
             };
-            var analysisResult = new AnalysisResult("ExampleClass", properties);
+            var builderModel = new BuilderModel("ExampleClass", "ExampleClassBuilder", properties);
 
-            var result = Execute(analysisResult);
+            // Act
+            var result = Execute(builderModel);
 
+            // Assert
             var expected = @"    public class ExampleClassBuilder
     {
         private string _name;
 
         public ExampleClassBuilder()
         {
-            _name = ""name"";
+            _name = ""Name"";
         }
 
         public ExampleClassBuilder WithName(string name)
@@ -44,10 +46,10 @@ namespace BuilderGenerator.Core.UnitTests.Creation
             Assert.Equal(expected, result);
         }
 
-        public string Execute(AnalysisResult analysisResult)
+        public string Execute(BuilderModel builderModel)
         {
-            var creator = new Creator();
-            return creator.Create(analysisResult);
+            var creator = new BuilderCodeGenerator();
+            return creator.Generate(builderModel);
         }
     }
 }

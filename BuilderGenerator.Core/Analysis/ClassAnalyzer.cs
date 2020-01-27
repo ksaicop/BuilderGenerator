@@ -24,12 +24,12 @@ namespace BuilderGenerator.Core.Analysis
             var propertyDeclarationSyntaxArray = classDeclarationSyntax.DescendantNodes()
                 .OfType<PropertyDeclarationSyntax>()
                 .ToArray();
-            var properties = new List<Property>(propertyDeclarationSyntaxArray.Length);
+            var properties = new List<ClassMember>(propertyDeclarationSyntaxArray.Length);
             foreach (var propertyDeclarationSyntax in propertyDeclarationSyntaxArray)
 	        {
                 var type = propertyDeclarationSyntax.Type.ToString();
                 var name = propertyDeclarationSyntax.Identifier.ValueText;
-                var property = new Property(type, name);
+                var property = new ClassMember(type, name);
                 properties.Add(property);
             }
 

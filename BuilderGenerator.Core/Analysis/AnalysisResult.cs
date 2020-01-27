@@ -1,23 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BuilderGenerator.Core.Analysis
 {
     public class AnalysisResult
     {
-        public AnalysisResult(string className, IEnumerable<Property> properties)
+        public AnalysisResult(string className, IReadOnlyCollection<ClassMember> properties)
         {
             ClassName = className;
-            if (properties != null)
-            {
-                Properties = new List<Property>(properties);
-            }
-            else
-            {
-                Properties = new List<Property>();
-            }
+            Properties = properties ?? Array.Empty<ClassMember>();
         }
 
         public string ClassName { get; }
-        public List<Property> Properties { get; }
+        public IReadOnlyCollection<ClassMember> Properties { get; }
     }
 }

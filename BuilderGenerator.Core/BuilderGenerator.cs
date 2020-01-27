@@ -10,8 +10,11 @@ namespace BuilderGenerator.Core
             var analyzer = new ClassAnalyzer();
             var analysisResult = analyzer.Analyze(classAsAString);
 
-            var creator = new Creator();
-            return creator.Create(analysisResult);
+            var modelCreator = new BuilderModelCreator();
+            var model = modelCreator.Create(analysisResult);
+
+            var codeGenerator = new BuilderCodeGenerator();
+            return codeGenerator.Generate(model);
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace BuilderGenerator.Core.Analysis
 {
-    public class Property
+    public class ClassMember
     {
-        public Property(string type, string name)
+        public ClassMember(string type, string name)
         {
             Type = type;
             Name = name;

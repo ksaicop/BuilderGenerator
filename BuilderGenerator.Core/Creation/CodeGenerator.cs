@@ -4,13 +4,13 @@ using System.Text;
 
 namespace BuilderGenerator.Core.Creation
 {
-    public class CodeBuilder
+    public class CodeGenerator
     {
         private const string _identation = "    ";
         private StringBuilder _stringBuilder;
         private int _indentationCount;
 
-        public CodeBuilder()
+        public CodeGenerator()
         {
             _stringBuilder = new StringBuilder();
             _indentationCount = 1;
@@ -22,7 +22,7 @@ namespace BuilderGenerator.Core.Creation
             IncreaseIdentation();
         }
 
-        private CodeBuilder IncreaseIdentation()
+        private CodeGenerator IncreaseIdentation()
         {
             _indentationCount++;
             return this;
@@ -34,7 +34,7 @@ namespace BuilderGenerator.Core.Creation
             AppendLine("}", value);
         }
 
-        private CodeBuilder DecreaseIdentation()
+        private CodeGenerator DecreaseIdentation()
         {
             if (_indentationCount <= 0)
             {
@@ -45,7 +45,7 @@ namespace BuilderGenerator.Core.Creation
             return this;
         }
 
-        public CodeBuilder Append(params string[] values)
+        public CodeGenerator Append(params string[] values)
         {
             AppendIdentation();
 
@@ -70,7 +70,7 @@ namespace BuilderGenerator.Core.Creation
             }
         }
 
-        public CodeBuilder AppendLine(params string[] values)
+        public CodeGenerator AppendLine(params string[] values)
         {
             if (values == null || !values.Any())
             {
